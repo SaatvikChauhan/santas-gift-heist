@@ -1,13 +1,9 @@
 # 🎅 Santa’s Gift Heist  
 ### 🎄 A Real-Time Multiplayer Social Deduction Game
 
-> *Can you save Christmas… or secretly destroy it from within?*
-
----
-
 ## 🚀 Overview
 
-**Santa’s Gift Heist** is a **real-time multiplayer web game** inspired by social-deduction classics like *Among Us*, wrapped in a **festive Christmas theme** 🎁❄️.
+**Santa’s Gift Heist** is a **real-time multiplayer web game** wrapped in a **festive Christmas theme** 🎁❄️.
 
 Players join a shared room, take on secret roles, complete tasks, sabotage progress, discuss suspicions, and vote — all in real time.
 

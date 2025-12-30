@@ -1,0 +1,364 @@
+* {
+  font-family: "Titan One", cursive;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+.home-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.frost-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(
+    circle,
+    transparent 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.3);
+}
+.home-bg {
+  position: absolute;
+  inset: 0;
+  background: url("assets/bg.jpeg");
+  background-size: contain;
+  transition: filter 0.6s ease;
+  z-index: 1;
+}
+
+.home-bg.blurred {
+  filter: blur(8px) brightness(0.65);
+}
+
+.home-ui {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-card {
+  background: rgba(246, 235, 220, 0.9);
+  color: #2d2d2d;
+  padding: 50px 40px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255, 209, 102, 0.6);
+  animation: floatAndGlow 6s ease-in-out infinite;
+  will-change: transform;
+  cursor: default;
+}
+
+@keyframes floatAndGlow {
+  0% {
+    transform: translateY(0px);
+    box-shadow: 0 5px 25px rgba(255, 209, 102, 0.3);
+  }
+  50% {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(255, 209, 102, 0.6);
+  }
+  100% {
+    transform: translateY(0px);
+    box-shadow: 0 5px 25px rgba(255, 209, 102, 0.3);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-card > * {
+  animation: fadeInUp 0.5s ease out;
+}
+
+.emoji {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 0px #5e4100) drop-shadow(0 4px 0px #3d2b00)
+    drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
+
+  animation: legendaryPulse 3s ease-in-out infinite;
+  display: inline-block;
+}
+.home-title {
+  font-family: "Luckiest Guy", cursive;
+  font-size: 3.5rem;
+  margin-bottom: 12px;
+
+  background: linear-gradient(
+    to bottom,
+    #fff3d0 0%,
+    #f9d423 45%,
+    #e6b12a 50%,
+    #b8860b 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(0 2px 0px #5e4100) drop-shadow(0 4px 0px #3d2b00)
+    drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
+
+  animation: legendaryPulse 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes legendaryPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 2px 0px #5e4100) drop-shadow(0 4px 0px #3d2b00)
+      brightness(1);
+  }
+  50% {
+    transform: scale(1.03);
+    filter: drop-shadow(0 2px 0px #5e4100) drop-shadow(0 6px 0px #3d2b00)
+      brightness(1.2);
+  }
+}
+
+.home-subtitle {
+  font-family: "Mountains of Christmas", cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 2rem 0;
+  opacity: 0.9;
+}
+
+.home-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #e0d6c8;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.home-input::placeholder {
+  opacity: 0.7;
+}
+
+.home-input:focus {
+  border-color: #ffd166;
+  box-shadow: 0 0 10px #ffd166;
+}
+
+.btn-container {
+  display: flex;
+  gap: 1rem;
+}
+.home-btn {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.2);
+}
+
+.home-btn.green {
+  background: #0f5132;
+}
+
+.home-btn.red {
+  background: #c1121f;
+}
+
+.home-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.home-btn:active:not(:disabled) {
+  transform: translateY(2px) scale(0.98);
+  filter: brightness(0.9);
+}
+
+.home-back {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.music-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-popup-card {
+  background: rgba(246, 235, 220, 0.8);
+  color: #2d2d2d;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255, 209, 102, 0.6);
+}
+
+.music-popup h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.music-popup p {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.music-buttons button {
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.music-buttons button:first-child {
+  background: #0f5132;
+  color: white;
+}
+
+.music-buttons button:last-child {
+  background: #c1121f;
+  color: white;
+}
+
+.snowflake {
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: Arial, sans-serif;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  position: fixed;
+  top: -10%;
+  z-index: 9999;
+  user-select: none;
+  cursor: default;
+  pointer-events: none;
+  animation-name: snowflakes-fall, snowflakes-shake;
+  animation-duration: 10s, 3s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
+  animation-play-state: running, running;
+}
+
+@keyframes snowflakes-fall {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes snowflakes-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(80px);
+  }
+}
+
+.roomcode-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.roomcode-card {
+  background: rgba(246, 235, 220, 0.9);
+  color: #2d2d2d;
+  padding: 45px 40px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 0 50px rgba(255, 209, 102, 0.8);
+  animation: popIn 0.5s ease;
+  cursor: default;
+}
+
+.roomcode-card h2 {
+  font-family: "Luckiest Guy";
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px #ffd166;
+}
+
+.roomcode-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.roomcode-box {
+  font-size: 2.5rem;
+  letter-spacing: 6px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  margin: 15px 0 25px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.roomcode-btn {
+  background: #0f5132;
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 0 20px rgba(15, 81, 50, 0.7);
+}
+
+.roomcode-hint {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-top: 15px;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

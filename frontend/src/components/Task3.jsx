@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import "../tasks.css";
 
 function randomRange() {
   const min = Math.floor(Math.random() * 40) + 20;
@@ -13,6 +14,10 @@ function driftRange(range) {
 }
 
 export default function Task3({ sabotage, onComplete }) {
+  const timerRef = useRef(null);
+  const driftRef = useRef(null);
+  const lastSabotageId = useRef(null);
+
   const [speed, setSpeed] = useState(10);
   const [wind, setWind] = useState(10);
   const [nav, setNav] = useState(10);
@@ -23,17 +28,13 @@ export default function Task3({ sabotage, onComplete }) {
   });
   const [timeLeft, setTimeLeft] = useState(15);
   const [activated, setActivated] = useState(false);
-  const [status, setStatus] = useState("STABILIZE SYSTEMS");
   const [completed, setCompleted] = useState(false);
   const [slidersFrozen, setSlidersFrozen] = useState(false);
   const [errorShake, setErrorShake] = useState(false);
   const [showSabotageAlert, setShowSabotageAlert] = useState(false);
+  const [showTimeoutPopup, setShowTimeoutPopup] = useState(false);
 
-  const timerRef = useRef(null);
-  const driftRef = useRef(null);
-  const lastSabotageId = useRef(null);
-
-  function resetTask(message = "SYSTEMS CRITICAL - RESETTING") {
+  function resetTask() {
     setErrorShake(true);
     setTimeout(() => setErrorShake(false), 500);
     setSpeed(10);
@@ -47,17 +48,18 @@ export default function Task3({ sabotage, onComplete }) {
     setTimeLeft(15);
     setActivated(false);
     setCompleted(false);
-    setStatus(message);
     startTimer();
   }
 
   function startTimer() {
     if (timerRef.current) clearInterval(timerRef.current);
+
     timerRef.current = setInterval(() => {
       setTimeLeft((t) => {
         if (t <= 1) {
-          resetTask();
-          return 15;
+          clearInterval(timerRef.current);
+          setShowTimeoutPopup(true);
+          return 0;
         }
         return t - 1;
       });
@@ -86,7 +88,7 @@ export default function Task3({ sabotage, onComplete }) {
 
   useEffect(() => {
     if (!activated || completed) return;
-    const check = (val, target) => val >= target.min && val <= target.max;
+    const check = (v, t) => v >= t.min && v <= t.max;
     if (
       check(speed, targets.speed) &&
       check(wind, targets.wind) &&
@@ -114,14 +116,14 @@ export default function Task3({ sabotage, onComplete }) {
 
   const Slider = ({ label, icon, value, setter, target }) => (
     <div className={`dashboard-gauge ${slidersFrozen ? "frozen" : ""}`}>
-      <div className="gauge-info">
+      <div className="gauge-header">
         <span className="gauge-icon">{icon}</span>
-        <label>{label}</label>
+        <span className="gauge-label">{label}</span>
         <span className="gauge-value">{value}%</span>
       </div>
-      <div className="slider-track-container">
+      <div className="slider-track">
         <div
-          className="target-zone-highlight"
+          className="target-zone"
           style={{
             left: `${target.min}%`,
             width: `${target.max - target.min}%`,
@@ -137,7 +139,6 @@ export default function Task3({ sabotage, onComplete }) {
             setter(+e.target.value);
             setActivated(true);
           }}
-          className="custom-range-input"
         />
       </div>
     </div>
@@ -156,62 +157,63 @@ export default function Task3({ sabotage, onComplete }) {
           </div>
         </div>
       )}
-
-      <div className="task-modal sleigh-dashboard terminal-entrance">
-        <div className="dashboard-glass-glare"></div>
-
-        <header className="dashboard-header">
-          <div className="round-counter header-left">
-            <div className="status-light-group">
-              <div
-                className={`status-dot ${completed ? "success" : "alert"}`}
-              ></div>
-              <div className="status-dot pulse"></div>
-            </div>
-            <h3>SLEIGH NAVIGATION TERMINAL</h3>
+      {showTimeoutPopup && (
+        <div className="sabotage-alert-overlay">
+          <div className="sabotage-alert-panel">
+            <div className="alert-icon">⏱️</div>
+            <h2>STABILITY WINDOW EXPIRED</h2>
+            <p>Sleigh alignment failed. Reinitializing systems...</p>
+            <button
+              className="terminal-action-button"
+              onClick={() => {
+                setShowTimeoutPopup(false);
+                resetTask();
+              }}
+            >
+              RESTART SYSTEM
+            </button>
           </div>
-          <div className="dashboard-timer">
-            <span className="timer-label">STABILITY_WINDOW</span>
-            <span className={`timer-digit ${timeLeft < 5 ? "critical" : ""}`}>
-              {timeLeft}s
-            </span>
+        </div>
+      )}
+
+      <div className="task-modal sleigh-dashboard">
+        <header className="task-header">
+          <div className="terminal-id">
+            <span className="blink-dot"></span>
+            <h3>SLEIGH_NAV_SYS</h3>
+          </div>
+          <div className={`status-badge ${timeLeft < 5 ? "critical" : ""}`}>
+            {timeLeft}s
           </div>
         </header>
 
-        <div className="gauges-container">
+        <section className="gauges-container">
           <Slider
-            label="THRUST VELOCITY"
+            label="THRUST"
             icon="🦌"
             value={speed}
             setter={setSpeed}
             target={targets.speed}
           />
           <Slider
-            label="AERO BALANCE"
+            label="STABILITY"
             icon="🌬️"
             value={wind}
             setter={setWind}
             target={targets.wind}
           />
           <Slider
-            label="VORTEX ALIGNMENT"
+            label="ALIGN"
             icon="🎯"
             value={nav}
             setter={setNav}
             target={targets.nav}
           />
-        </div>
+        </section>
 
-        {slidersFrozen && (
-          <div className="freeze-overlay">
-            <div className="ice-fringe"></div>
-            <span className="freeze-text">SYSTEMS FROZEN BY GRINCH</span>
-          </div>
-        )}
-
-        <footer className="dashboard-footer">
-          <div className="instruction-box">
-            <p className="glitch-text">ALIGN ALL GAUGES WITHIN TARGET ZONES</p>
+        <footer className="terminal-footer">
+          <div className="instruction-text">
+            ALIGN ALL GAUGES WITHIN TARGET ZONES
           </div>
         </footer>
       </div>

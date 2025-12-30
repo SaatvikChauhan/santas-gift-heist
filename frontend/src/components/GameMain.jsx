@@ -202,7 +202,7 @@ export default function GameMain({
         )}
 
       <div className="active-task-container">
-        {activeTask === "gift" && (
+        {room.phase === "action" && activeTask === "gift" && (
           <Task1
             sabotage={sabotage}
             onComplete={() => {
@@ -212,7 +212,7 @@ export default function GameMain({
             playClick={playClick}
           />
         )}
-        {activeTask === "memory" && (
+        {room.phase === "action" && activeTask === "memory" && (
           <Task2
             sabotage={sabotage}
             onComplete={() => {
@@ -221,7 +221,7 @@ export default function GameMain({
             }}
           />
         )}
-        {activeTask === "reindeer" && (
+        {room.phase === "action" && activeTask === "reindeer" && (
           <Task3
             sabotage={sabotage}
             onComplete={() => {

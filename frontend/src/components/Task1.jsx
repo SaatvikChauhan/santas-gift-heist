@@ -1,12 +1,13 @@
 import { useRef, useState, useEffect } from "react";
+import "../tasks.css";
 
 const INITIAL_GIFTS = [
-  { id: 1, color: "Minecraft", logo: "/logos/minecraft.png" },
-  { id: 2, color: "Terraria", logo: "/logos/terraria.png" },
   { id: 3, color: "GTA6", logo: "/logos/gta6.png" },
+  { id: 2, color: "Terraria", logo: "/logos/terraria.png" },
+  { id: 1, color: "Minecraft", logo: "/logos/minecraft.png" },
   { id: 4, color: "Terraria", logo: "/logos/terraria.png" },
-  { id: 6, color: "GTA6", logo: "/logos/gta6.png" },
   { id: 5, color: "Minecraft", logo: "/logos/minecraft.png" },
+  { id: 6, color: "GTA6", logo: "/logos/gta6.png" },
 ];
 
 const KIDS = [
@@ -53,11 +54,13 @@ export default function Task1({ sabotage, onComplete, playClick }) {
 
   function handleKidClick(kid) {
     if (!selectedGift) return;
+
     if (kid.wants === selectedGift.color) {
       setGifts((prev) => prev.filter((g) => g.id !== selectedGift.id));
       const nextMatch = matched + 1;
       setMatched(nextMatch);
       setSelectedGift(null);
+
       if (nextMatch >= 3) {
         onComplete();
         resetTask();
@@ -85,10 +88,10 @@ export default function Task1({ sabotage, onComplete, playClick }) {
         </div>
       )}
 
-      <div className="task-modal gift-sorting-ui terminal-entrance">
+      <div className="task-modal gift-sorting-ui">
         <header className="task-header">
           <div className="terminal-id">
-            <span className="blink-dot"></span>
+            <span className="blink-dot" />
             <h3>DISPATCH_UNIT_01</h3>
           </div>
           <div className="round-counter">{matched} / 3</div>
@@ -104,13 +107,11 @@ export default function Task1({ sabotage, onComplete, playClick }) {
               onClick={() => handleKidClick(kid)}
             >
               <div className="card-header">{kid.name}</div>
-              <div className="wish-visual-container">
-                <img
-                  src={kid.logo}
-                  alt={kid.wants}
-                  className="wish-logo-hologram"
-                />
-              </div>
+              <img
+                src={kid.logo}
+                alt={kid.wants}
+                className="wish-logo-hologram"
+              />
               <div className="card-footer">STATUS: PENDING</div>
             </div>
           ))}
@@ -134,7 +135,6 @@ export default function Task1({ sabotage, onComplete, playClick }) {
             >
               <div className="node-internal">
                 <img src={gift.logo} alt={gift.color} className="node-logo" />
-                <div className="node-overlay"></div>
               </div>
               <div className="node-tag">{gift.color}</div>
             </button>

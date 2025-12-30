@@ -31,7 +31,7 @@ function App() {
       end: new Audio("/music/victory.mp3"),
     }),
     []
-  ); 
+  );
 
   useEffect(() => {
     tracks.home.loop = true;
@@ -196,6 +196,7 @@ function App() {
                 <span className="emoji">🎅</span>{" "}
                 <span className="home-title">Santa’s Gift Heist</span>
               </h1>
+
               <p className="home-subtitle">
                 A cozy Christmas game of cheerful chaos, clever lies, secret
                 roles, and mischievous holiday betrayal.

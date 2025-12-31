@@ -1,15 +1,16 @@
 # 🎅 Santa’s Gift Heist  
-### 🎄 A Real-Time Multiplayer Social Deduction Game
+### A Real-Time Multiplayer Social Deduction Game
 
-## Demo Link: https://drive.google.com/file/d/1Dmh9L1BslzI2L-BtADini7FHpH170ZlM/view?usp=sharing
+### Demo Link: https://drive.google.com/file/d/1Dmh9L1BslzI2L-BtADini7FHpH170ZlM/view?usp=sharing
 
-## 🚀 Overview
+
+## Overview
 
 **Santa’s Gift Heist** is a **real-time multiplayer web game** wrapped in a **festive Christmas theme** 🎁❄️.
 
 Players join a shared room, take on secret roles, complete tasks, sabotage progress, discuss suspicions, and vote — all in real time.
 
-Built during a hackathon with a focus on:
+Built with a focus on:
 - Multiplayer gameplay
 - Socket-based real-time interactions
 - Immersive UI & animations
@@ -17,7 +18,7 @@ Built during a hackathon with a focus on:
 
 ---
 
-## 🕹 Gameplay
+## Gameplay
 
 ### 👥 Roles
 - **🎄 Elf**
@@ -53,19 +54,19 @@ Each task is interactive, animated, and sabotage-able.
 
 ---
 
-## ✨ Features
+## Features
 
-- ⚡ Real-time multiplayer using WebSockets
-- 🔐 Hidden roles & social deduction
-- 🗳 Live discussion & voting system
-- ⏳ Round timers & cooldowns
-- 👁 Spectator mode after elimination
-- 🎨 “WOW-factor” UI with animations & effects
-- ❄️ Festive snowfall & immersive theme
+- Real-time multiplayer using WebSockets
+- Hidden roles & social deduction
+- Live discussion & voting system
+- Timers & cooldowns
+- Spectator mode after elimination
+- Gamer's first UI with animations & effects
+- Festive snowfall & immersive theme
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
 ### Frontend
 - React

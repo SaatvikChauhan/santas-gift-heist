@@ -1,4 +1,9 @@
 * {
+  font-family: "Titan One", cursive;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   cursor: default;
 }
 
@@ -105,7 +110,6 @@
 }
 
 .game-timer {
-  font-family: "Titan One", cursive;
   font-size: 2rem;
   background: var(--holiday-red);
   padding: 12px 30px;
@@ -221,7 +225,6 @@
 
 .primary-btn,
 .secondary-btn {
-  font-family: "Titan One";
   text-transform: uppercase;
   padding: 18px 45px;
   border-radius: 18px;
@@ -605,7 +608,6 @@
 
 .task-info h3,
 .label {
-  font-family: "Titan One", cursive;
   font-size: 1.1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -851,7 +853,6 @@
 }
 
 .chat-panel h3 {
-  font-family: "Titan One", cursive;
   color: var(--arctic-cyan);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -912,7 +913,6 @@
   border: none;
   padding: 10px 25px;
   border-radius: 10px;
-  font-family: "Titan One";
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 0 15px rgba(0, 119, 182, 0.4);
@@ -939,7 +939,6 @@
 }
 
 .vote-panel h3 {
-  font-family: "Titan One", cursive;
   color: var(--holiday-red);
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -1253,7 +1252,6 @@
 }
 
 .end-stat-box span:last-child {
-  font-family: "Titan One", cursive;
   font-size: 1.6rem;
   color: var(--gold-glow);
   text-shadow: 0 0 12px var(--gold-glow);

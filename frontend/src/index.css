@@ -112,6 +112,7 @@
     #e6b12a 50%,
     #b8860b 100%
   );
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 

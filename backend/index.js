@@ -5,7 +5,12 @@ const cors = require("cors");
 const { startGame, createRoom, joinRoom, rooms } = require("./rooms");
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://santas-gift-heist-isqv.onrender.com/",
+    credentials: true,
+  })
+);
 
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });

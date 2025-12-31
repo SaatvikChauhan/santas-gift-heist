@@ -1,7 +1,8 @@
 # 🎅 Santa’s Gift Heist  
 ### A Real-Time Multiplayer Social Deduction Game
 
-### Demo Link: https://drive.google.com/file/d/1Dmh9L1BslzI2L-BtADini7FHpH170ZlM/view?usp=sharing
+### Visit: https://santas-gift-heist-isqv.onrender.com/
+### Playing guide: https://drive.google.com/file/d/1Dmh9L1BslzI2L-BtADini7FHpH170ZlM/view?usp=sharing
 
 
 ## Overview
